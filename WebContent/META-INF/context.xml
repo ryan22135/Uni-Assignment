@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+<Resource name="jdbc/library"
+
+auth="Container"
+
+type="javax.sql.DataSource"
+
+username="root"
+
+password=""
+
+driverClassName="com.mysql.cj.jdbc.Driver"
+
+url="jdbc:mysql:localhost/library:3306/Ass2"
+
+serverTimezone="UTC"
+
+maxTotal="15"
+
+maxIdle="3"/>
+
+</Context>
