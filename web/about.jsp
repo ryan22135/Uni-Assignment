@@ -8,25 +8,24 @@
     </h:head>
     <h:body>
        <ul>
-        <li><a class="active" href="home.jsp">Home</a></li>
+        <li><a href="home.jsp">Home</a></li>
         <li><a href="books.jsp">Books</a></li>
         <li><a href="audios.jsp">Audio</a></li>
         <li><a href="computers.jsp">Computer</a></li>
         <div class="right">
             <li><a href="#about">Login</a></li>
             <li><a href="#about">Signup</a></li>
-            <li><a href="about.jsp">About</a></li>
+            <li><a class="active" href="about.jsp">About</a></li>
             <li><a href="contact.jsp">Contact</a></li>
         </div>
-        
-        <div class="search">
-            <form action="">
-                <input type="text" placeholder="Search.." name="search"> 
-                <button type="submit"></button>
-            </form>
-        </div>
-        
        </ul>
+        
+        <h2> What is FedUni Library? </h2>
+        <p> FedUni Library is a recently established community library. </p>
+        
+        <h2> What can you do with this service? </h2>
+        <p> </p>
+        
     </h:body>
 </html>
 

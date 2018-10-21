@@ -22,14 +22,15 @@
     <body>
         
         <ul>
-            <li><a href="index.xhtml">Home</a></li>
+            <li><a href="home.jsp">Home</a></li>
             <li><a href="books.jsp">Books</a></li>
             <li><a href="audios.jsp">Audio</a></li>
             <li><a class="active" href="computers.jsp">Computer</a></li>
             <div class="right">
                 <li><a href="#about">Login</a></li>
                 <li><a href="#about">Signup</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="about.jsp">About</a></li>
+                <li><a href="contact.jsp">Contact</a></li>
             </div>
         </ul>
         
@@ -69,6 +70,7 @@
             <p> <b> Manufacturer - </b> <%=resultSet.getString("manufacturer") %> </p>
             <p> <b> Release Date - </b> <%=resultSet.getString("releaseDate") %> </p>
             <p> <b> Model Number - </b> <%=resultSet.getString("modelNum") %> </p>
+            <p> <b>--------</b></p>
             </tr>
         <% 
     }

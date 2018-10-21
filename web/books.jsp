@@ -21,14 +21,15 @@
     </head> 
     <body>      
         <ul>
-        <li><a href="index.xhtml">Home</a></li>
+        <li><a href="home.jsp">Home</a></li>
         <li><a class="active" href="books.jsp">Books</a></li>
         <li><a href="audios.jsp">Audio</a></li>
         <li><a href="computers.jsp">Computer</a></li>
         <div class="right">
             <li><a href="#about">Login</a></li>
             <li><a href="#about">Signup</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="about.jsp">About</a></li>
+            <li><a href="contact.jsp">Contact</a></li>
         </div>
        </ul>
             
@@ -70,6 +71,7 @@
             <p> <b>Item Name - </b> <%=resultSet.getString("publisher") %> </p>
             <p> <b> Published Date - </b> <%=resultSet.getString("publishedDate") %> </p>
             <p> <b> ISBN - </b> <%=resultSet.getString("ISBN") %> </p>
+            <p> <b>--------</b></p>
             </tr>
      
             <%

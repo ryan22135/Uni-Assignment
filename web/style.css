@@ -25,3 +25,13 @@ li a:hover {
 .right{
     float: right;
 }
+
+.search button {
+  float: right;
+  background: #ddd;
+  cursor: pointer;
+}
+
+.button {
+  float: right;
+}

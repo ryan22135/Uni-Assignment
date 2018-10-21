@@ -17,24 +17,25 @@
  <html> 
     <head> 
         <link rel="stylesheet" type="text/css" href="style.css"> </link>
-        <title>Audio list</title>
+        <title>Contact us</title>
     </head> 
     <body>
         
         <ul>
             <li><a href="home.jsp">Home</a></li>
             <li><a href="books.jsp">Books</a></li>
-            <li><a class="active" href="audios.jsp">Audio</a></li>
+            <li><a href="audios.jsp">Audio</a></li>
             <li><a href="computers.jsp">Computer</a></li>
             <div class="right">
                 <li><a href="#about">Login</a></li>
                 <li><a href="#about">Signup</a></li>
                 <li><a href="about.jsp">About</a></li>
-                <li><a href="contact.jsp">Contact</a></li>
+                <li><a class="active" href="contact.jsp">Contact</a></li>
             </div>
-       </ul>
+        </ul>
         
-        <h1>Audio list </h1>
+        <h1>Contact us </h1>
+        
         <% 
             String id = request.getParameter("userId");
             String driverName = "com.mysql.jdbc.Driver";
@@ -56,19 +57,17 @@
             try{ 
             connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
             statement=connection.createStatement();
-            String sql ="SELECT I.*, A.* FROM item I JOIN audioCD A ON (I.itemID = A.diskID)";
+            String sql ="SELECT * FROM users WHERE isAdmin=1";
 
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
             %>
             <tr bgcolor="#DEB887">
-
-            <p> <b> Name - </b> <%=resultSet.getString("name") %> </p>
-            <p> <b> Description - </b> <%=resultSet.getString("description") %> </p>
-            <p> <b> Item ID - </b> <%=resultSet.getString("DiskID") %></p>
-            <p> <b> Artist - </b> <%=resultSet.getString("artist") %> </p>
-            <p> <b> Type - </b> <%=resultSet.getString("Type") %> </p>
-            <p> <b>--------</b></p>
+            
+            <p> <b> Name - </b> <%=resultSet.getString("firstName") %> 
+      <%=resultSet.getString("lastName") %> </p>
+            <p> <b> Email - </b> <%=resultSet.getString("email") %> </p>
+            
             </tr>
         <% 
     }
