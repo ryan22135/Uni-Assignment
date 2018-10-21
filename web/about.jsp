@@ -13,8 +13,8 @@
         <li><a href="audios.jsp">Audio</a></li>
         <li><a href="computers.jsp">Computer</a></li>
         <div class="right">
-            <li><a href="#about">Login</a></li>
-            <li><a href="#about">Signup</a></li>
+            <li><a href="login.jsp">Login</a></li>
+            <li><a href="signup.jsp">Signup</a></li>
             <li><a class="active" href="about.jsp">About</a></li>
             <li><a href="contact.jsp">Contact</a></li>
         </div>
