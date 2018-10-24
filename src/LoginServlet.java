@@ -1,3 +1,4 @@
+package Main;
 
 
 import java.io.IOException;
@@ -6,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -40,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
@@ -49,10 +51,13 @@ public class LoginServlet extends HttpServlet {
 			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?" + "user=root&password=&serverTimezone=UTC");
 			Statement s = c.createStatement();
 			
-			ResultSet r = s.executeQuery("SELECT userID FROM Users WHERE email = '" + username + "' AND password = '" + password + "'");
+			ResultSet r = s.executeQuery("SELECT * FROM Users WHERE email = '" + username + "' AND password = '" + password + "'");
 			
 			while (r.next()) {
-				response.sendRedirect("success.html");
+				Userbean user = new Userbean(r.getString("userID"), r.getString("firstName"), r.getString("lastName"), r.getString("email"), r.getString("homeAddress"), r.getString("dob"), r.getBoolean("isAdmin"));
+				session.setAttribute("currentUser", user);
+				System.out.println(user.testData());
+				response.sendRedirect("success.jsp");
 				return;
 			}
 			response.sendRedirect("login.jsp");
