@@ -46,26 +46,27 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?" + "user=root&password=&serverTimezone=UTC");
-			Statement s = c.createStatement();
-			
-			ResultSet r = s.executeQuery("SELECT * FROM Users WHERE email = '" + username + "' AND password = '" + password + "'");
-			
-			while (r.next()) {
-				Userbean user = new Userbean(r.getString("userID"), r.getString("firstName"), r.getString("lastName"), r.getString("email"), r.getString("homeAddress"), r.getString("dob"), r.getBoolean("isAdmin"));
-				session.setAttribute("currentUser", user);
-				System.out.println(user.testData());
-				response.sendRedirect("success.jsp");
-				return;
+		Connector c = new Connector();
+		
+		
+		
+			try {
+				ResultSet r = c.selectSQL("SELECT * FROM Users WHERE email = '" + username + "' AND password = '" + password + "'");
+				
+				while (r.next()) {
+					Userbean user = new Userbean(r.getString("userID"), r.getString("firstName"), r.getString("lastName"), r.getString("email"), r.getString("homeAddress"), r.getString("dob"), r.getBoolean("isAdmin"));
+					session.setAttribute("currentUser", user);
+					System.out.println(user.testData());
+					response.sendRedirect("success.jsp");
+					return;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				response.sendRedirect("error.jsp");
 			}
 			response.sendRedirect("login.jsp");
 			return;
-		} catch (Exception e) {
-			e.printStackTrace();
-			response.sendRedirect("login.jsp");
-		}
 	}
 
 }

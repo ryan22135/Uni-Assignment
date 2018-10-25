@@ -1,3 +1,4 @@
+package Main;
 
 
 import java.io.IOException;
@@ -49,17 +50,15 @@ public class RegistrationServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?" + "user=root&password=&serverTimezone=UTC");
-			Statement s = c.createStatement();
+			Connector c = new Connector();
 			
-			s.executeUpdate("INSERT INTO users (firstName, lastName, email, dob, homeAddress, password) "
+			c.insertSQL("INSERT INTO users (firstName, lastName, email, dob, homeAddress, password) "
 					+ "VALUES ('" + firstName + "', '" + lastName + "', '" + email + "', '" + dob + "', '" + address + "', '" + password + "')");
 			response.sendRedirect("login.jsp");
 			return;
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("error.jsp");
 		}
 	}
 
